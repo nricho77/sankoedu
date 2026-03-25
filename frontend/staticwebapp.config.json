@@ -1,0 +1,15 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  },
+
+   "globalHeaders": {  "routes": [
+    "Content-Security-Policy": "default-src 'self' https://*.microsoft.com https://*.azurewebsites.net; script-src 'self' 'unsafe-inline'; connect-src 'self' https://graph.microsoft.com/;"
+  }
+}
+    {
+      "route": "/api/*",
+      "allowedRoles": ["anonymous"]
+    }
+  ],
+
