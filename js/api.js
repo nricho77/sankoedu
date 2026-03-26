@@ -1,13 +1,49 @@
-export const api = {
-  async login(email, password) {
-    const r = await fetch("/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password })
-    });
+const BASE = "/api";
 
-    if (!r.ok) throw new Error("login failed");
-    return r.json();
+async function request(url, options = {}) {
+  const r = await fetch(BASE + url, {
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+      ...(options.headers || {})
+    },
+    ...options
+  });
+
+  if (!r.ok) {
+    const msg = await r.text();
+    throw new Error(msg || r.statusText);
+  }
+
+  return r.json();
+}
+
+export const api = {
+  get(url) {
+    return request(url);
+  },
+
+  post(url, data) {
+    return request(url, {
+      method: "POST",
+      body: JSON.stringify(data)
+    });
+  },
+
+  put(url, data) {
+    return request(url, {
+      method: "PUT",
+      body: JSON.stringify(data)
+    });
+  },
+
+  delete(url) {
+    return request(url, {
+      method: "DELETE"
+    });
+  },
+
+  login(email, password) {
+    return this.post("/login", { email, password });
   }
 };
-``
