@@ -2,9 +2,9 @@
 // appro.js — Approbation des entrées
 // =====================================================
 
-import { Auth } from "../auth.js";
-import { DBApp } from "../db.js";
-import { RouterApp } from "../router.js";
+import { Auth } from "/js/auth.js";
+import { DBApp } from "/js/db.js";
+import { RouterApp } from "/js/router.js";
 import { Modal } from "./components/modal.js";
 import { Toast } from "./components/toast.js";
 
