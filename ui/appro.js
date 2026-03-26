@@ -2,7 +2,7 @@
 // appro.js — Approbation des entrées
 // =====================================================
 
-import { Auth } from "/js/auth.js";
+import { hasRole, isAuthenticated } from "/js/auth.js";
 import { DBApp } from "/js/db.js";
 import { RouterApp } from "/js/router.js";
 import { Modal } from "/ui/components/modal.js";
