@@ -2,9 +2,9 @@
 // admin.js — panneau d’administration complet
 // =====================================================
 
-import { Auth } from "/js/auth.js";
+import { isAuthenticated, hasRole } from "/js/auth.js";
 import { DBApp } from "/js/db.js";
-import { RouterApp } from "/js/router.js";
+import { router } from "/js/router.js";
 import { Modal } from "/ui/components/modal.js";
 import { Toast } from "/ui/components/toast.js";
 import { renderTable } from "/ui/components/table.js";
@@ -14,8 +14,13 @@ export async function renderAdmin() {
   const screen = document.getElementById("screen-admin");
   const user = Auth.currentUser;
 
-  if (!user || user.role !== "admin") {
-    screen.innerHTML = `<div class="pad">Accès refusé</div>`;
+  if (!isAuthenticated() || !hasRole("admin")) {
+    root.innerHTML = `
+      <div class="screen">
+        <h2>Accès refusé</h2>
+        <p>Cette section est réservée aux administrateurs.</p>
+      </div>
+    `;
     return;
   }
 
