@@ -1,4 +1,6 @@
 module.exports = async function (context) {
-  context.res = { body: "OK" };
+  context.res = {
+    status: 200,
+    body: "✅ API OK"
+  };
 };
-``
