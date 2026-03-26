@@ -433,6 +433,18 @@ td {
   }
 }
 
+button {
+  transition: background .2s, transform .1s;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
 :root {
   --primary: #2563eb;
   --bg: #f9fafb;
