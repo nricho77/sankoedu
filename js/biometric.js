@@ -3,8 +3,8 @@
 // biometric.js — Préparation biométrie (WebAuthn/NFC)
 // ==================================================
 
-import { API } from "./api.js";
-import { showToast } from "./utils.js";
+import { API } from "/js/api.js";
+import { showToast } from "/js/utils.js";
 
 class BiometricClass {
 
