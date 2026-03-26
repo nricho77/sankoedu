@@ -1,84 +1,36 @@
-/* =========================================================
-   app.js — Point d’entrée principal de l’application
-   ========================================================= */
+import { router } from "./router.js";
+import { api } from "./api.js";
 
-/**
- * Ce fichier :
- * - démarre l’application
- * - vérifie que le frontend est bien chargé
- * - prépare la structure SPA
- * - sera enrichi ensuite (auth, router, API, etc.)
- */
+// démarrage
+console.log("✅ app.js chargé");
 
-console.log("✅ app.js chargé correctement");
+// Exposer api en global (pratique au début)
+window.api = api;
 
-// ---------------------------------------------------------
-// Sélecteurs utiles
-// ---------------------------------------------------------
-const setupScreen = document.getElementById("setup-screen");
-const loginScreen = document.getElementById("login-screen");
-const appRoot     = document.getElementById("app");
-
-// ---------------------------------------------------------
-// Initialisation de l'application
-// ---------------------------------------------------------
-function initApp() {
-  console.log("🚀 Initialisation de l’application…");
-
-  // Pour l’instant :
-  // – on masque tout
-  hideAll();
-
-  // – on affiche l’écran de login par défaut
-  showLogin();
-}
-
-// ---------------------------------------------------------
-// Fonctions d'affichage
-// ---------------------------------------------------------
-function hideAll() {
-  if (setupScreen) setupScreen.classList.add("hidden");
-  if (loginScreen) loginScreen.classList.add("hidden");
-  if (appRoot)     appRoot.classList.add("hidden");
-}
-
-function showSetup() {
-  hideAll();
-  if (setupScreen) setupScreen.classList.remove("hidden");
-}
+// Gestion écran login → app (temporaire)
+const login = document.getElementById("login-screen");
+const app   = document.getElementById("app");
 
 function showLogin() {
-  hideAll();
-  if (loginScreen) loginScreen.classList.remove("hidden");
+  login?.classList.remove("hidden");
+  app?.classList.add("hidden");
 }
-
 function showApp() {
-  hideAll();
-  if (appRoot) appRoot.classList.remove("hidden");
+  login?.classList.add("hidden");
+  app?.classList.remove("hidden");
 }
 
-// ---------------------------------------------------------
-// Gestion très simple des boutons (temporaire)
-// ---------------------------------------------------------
-const btnSetup = document.getElementById("btn-setup");
-if (btnSetup) {
-  btnSetup.addEventListener("click", () => {
-    alert("🔧 Setup initial – à brancher avec l’API plus tard");
-    showLogin();
-  });
-}
+// Test API (optionnel, rassurant)
+api.health().then(r => console.log("API:", r));
 
-const btnLoginLocal = document.getElementById("btn-login-local");
-if (btnLoginLocal) {
-  btnLoginLocal.addEventListener("click", () => {
-    alert("🔐 Connexion locale – à brancher avec l’API plus tard");
+// Simuler login OK (à remplacer plus tard)
+document.addEventListener("click", (e) => {
+  if (e.target.closest("#btn-login-local")) {
     showApp();
-  });
-}
-
-// ---------------------------------------------------------
-// Lancement automatique quand le DOM est prêt
-// ---------------------------------------------------------
-document.addEventListener("DOMContentLoaded", () => {
-  initApp();
+    router.go("home");
+  }
 });
+
+// Init
+showLogin();
+router.init();
