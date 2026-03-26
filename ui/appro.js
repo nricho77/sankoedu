@@ -5,8 +5,8 @@
 import { Auth } from "/js/auth.js";
 import { DBApp } from "/js/db.js";
 import { RouterApp } from "/js/router.js";
-import { Modal } from "./components/modal.js";
-import { Toast } from "./components/toast.js";
+import { Modal } from "/ui/components/modal.js";
+import { Toast } from "/ui/components/toast.js";
 
 export async function renderAppro() {
 
