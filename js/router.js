@@ -3,46 +3,41 @@
 // router.js — Navigation entre écrans
 // ====================================
 
-import { $all } from "./utils.js";
+import { renderHome }    from "../ui/home.js";
+import { renderEntries } from "../ui/entries.js";
+import { renderEntry }   from "../ui/entry.js";
+import { renderAppro }   from "../ui/appro.js";
+import { renderAdmin }   from "../ui/admin.js";
+import { renderProfile } from "../ui/profile.js";
 
-class Router {
+const routes = {
+  home: renderHome,
+  entries: renderEntries,
+  entry: renderEntry,
+  appro: renderAppro,
+  admin: renderAdmin,
+  profile: renderProfile
+};
 
-  constructor() {
-    this.current = "home";
-    this.screens = {};
-  }
+export const router = {
+  current: null,
 
-  register(name, renderFn) {
-    this.screens[name] = renderFn;
-  }
+  init() {
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-route]");
+      if (!btn) return;
+      const route = btn.dataset.route;
+      this.go(route);
+    });
+  },
 
-  async go(name) {
-    if (!this.screens[name]) {
+  go(name, params = {}) {
+    const fn = routes[name];
+    if (!fn) {
       console.warn("Route inconnue:", name);
       return;
     }
-
-    // Masquer tous les écrans
-    $all(".screen").forEach(s => s.classList.add("hidden"));
-
-    // Afficher le bon écran
-    const el = document.getElementById("screen-" + name);
-    el.classList.remove("hidden");
-
-    // Exécuter rendu du module
     this.current = name;
-    await this.screensname;
-
-    this.updateNav(name);
+    fn(params);
   }
-
-  updateNav(active) {
-    $all(".nav-item").forEach(b => {
-      const r = b.dataset.route;
-      if (r === active) b.classList.add("active");
-      else b.classList.remove("active");
-    });
-  }
-}
-
-export const RouterApp = new Router();
+};
