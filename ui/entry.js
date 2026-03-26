@@ -4,7 +4,7 @@
 
 import { isAuthenticated } from "/js/auth.js";
 import { DBApp } from "/js/db.js";
-import { RouterApp } from "/js/router.js";
+import { router } from "/js/router.js";
 import { JOUR_TYPES } from "/js/config.js";
 import { computeHours, minutesToHHMM, showToast } from "/js/utils.js";
 
