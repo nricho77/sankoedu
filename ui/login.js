@@ -1,5 +1,5 @@
-import { api } from "../js/api.js";
-import { setUser } from "../js/auth.js";
+import { api } from "/js/api.js";
+import { setUser } from "/js/auth.js";
 
 export function renderLogin(onSuccess) {
   const root = document.getElementById("login-screen");
