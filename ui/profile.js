@@ -2,8 +2,8 @@
 // profile.js — écran Profil utilisateur
 // =====================================================
 
-import { Auth } from "../auth.js";
-import { DBApp } from "../db.js";
+import { Auth } from "/js/auth.js";
+import { DBApp } from "/js/db.js";
 import { Toast } from "./components/toast.js";
 
 export async function renderProfile() {
