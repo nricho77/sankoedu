@@ -432,3 +432,31 @@ td {
     font-size:10px;
   }
 }
+
+:root {
+  --primary: #2563eb;
+  --bg: #f9fafb;
+  --card: white;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui;
+  background: var(--bg);
+}
+
+.screen {
+  animation: fadeIn .25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (max-width: 768px) {
+  nav button {
+    flex: 1;
+  }
+}
+
