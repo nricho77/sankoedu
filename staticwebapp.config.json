@@ -3,9 +3,6 @@
     "rewrite": "/index.html"
   },
   "routes": [
-    {
-      "route": "/api/*",
-      "allowedRoles": ["anonymous"]
-    }
+    { "route": "/api/*", "allowedRoles": ["anonymous"] }
   ]
 }
