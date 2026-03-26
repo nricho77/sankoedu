@@ -6,7 +6,7 @@
     "CLIENT_ID":        "<GUID>",
     "TENANT_ID":        "<tenant-id>",
     "CLIENT_SECRET":    "<secret>",
-    "SHAREPOINT_SITE":  "https://<tenant>.sharepoint.com/sites/FeuillesTemps",
+    "SHAREPOINT_SITE":  "https://<tenant>.sharepoint.com/sites/FeuilleDeTps2",
     "SP_LIST_USERS":    "FT_Users",
     "SP_LIST_SITES":    "FT_Sites",
     "SP_LIST_ASSIGNS":  "FT_Assigns",
@@ -15,4 +15,3 @@
     "JWT_SECRET":       "<random-string>"
   }
 }
-``
