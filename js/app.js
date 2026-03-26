@@ -1,9 +1,18 @@
 import { router } from "./router.js";
 import { renderLogin } from "../ui/login.js";
-import { isAuthenticated, getUser, clearUser, hasRole } from "./auth.js";
+import { isAuthenticated, hasRole } from "./auth.js";
 
 const loginScreen = document.getElementById("login-screen");
 const app = document.getElementById("app");
+
+/* =========================
+   Affichage conditionnel
+========================= */
+
+function showLogin() {
+  app.classList.add("hidden");
+  loginScreen.classList.remove("hidden");
+}
 
 function showApp() {
   loginScreen.classList.add("hidden");
@@ -12,10 +21,9 @@ function showApp() {
   router.go("home");
 }
 
-function showLogin() {
-  app.classList.add("hidden");
-  loginScreen.classList.remove("hidden");
-}
+/* =========================
+   Gestion des rôles UI
+========================= */
 
 function applyAuthorizations() {
   if (!hasRole("admin")) {
@@ -26,12 +34,17 @@ function applyAuthorizations() {
   }
 }
 
+/* =========================
+   INIT
+========================= */
+
 router.init();
 
 if (isAuthenticated()) {
+  // Utilisateur déjà connecté
   showApp();
 } else {
+  // Aucun utilisateur → LOGIN OBLIGATOIRE
   renderLogin(showApp);
   showLogin();
 }
-``
