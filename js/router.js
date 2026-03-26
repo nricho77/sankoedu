@@ -1,9 +1,10 @@
-import { renderHome } from "../ui/home.js";
-import { renderEntries } from "../ui/entries.js";
-import { renderEntry } from "../ui/entry.js";
-import { renderAppro } from "../ui/appro.js";
-import { renderAdmin } from "../ui/admin.js";
-import { renderProfile } from "../ui/profile.js";
+import { renderHome } from "/ui/home.js";
+import { renderEntries } from "/ui/entries.js";
+import { renderEntry } from "/ui/entry.js";
+import { renderAppro } from "/ui/appro.js";
+import { renderAdmin } from "/ui/admin.js";
+import { renderProfile } from "/ui/profile.js";
+
 
 const routes = {
   home: renderHome,
