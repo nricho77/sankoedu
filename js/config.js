@@ -53,11 +53,13 @@ export const JOUR_TYPES = [
   "conge"
 ];
 
+
 export const ROLES = {
   ADMIN: "admin",
-  GESTIONNAIRE: "gestionnaire",
-  EDUCATRICE: "educatrice"
+  APPROVER: "approver",
+  USER: "user"
 };
+
 
 
 // ================================
