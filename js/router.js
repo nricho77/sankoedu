@@ -1,8 +1,3 @@
-
-// ====================================
-// router.js — Navigation entre écrans
-// ====================================
-
 import { renderHome } from "../ui/home.js";
 import { renderEntries } from "../ui/entries.js";
 import { renderEntry } from "../ui/entry.js";
@@ -26,8 +21,10 @@ export const router = {
       if (btn) this.go(btn.dataset.route);
     });
   },
-  go(name) {
-    const fn = routes[name];
-    if (fn) fn();
+
+  go(route) {
+    const screen = routes[route];
+    if (!screen) return;
+    screen();
   }
 };
