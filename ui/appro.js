@@ -4,7 +4,7 @@
 
 import { hasRole, isAuthenticated } from "/js/auth.js";
 import { DBApp } from "/js/db.js";
-import { RouterApp } from "/js/router.js";
+import { router } from "/js/router.js";
 import { Modal } from "/ui/components/modal.js";
 import { Toast } from "/ui/components/toast.js";
 
