@@ -1,4 +1,7 @@
-export function renderLogin(onLoginSuccess) {
+import { api } from "../js/api.js";
+import { setUser } from "../js/auth.js";
+
+export function renderLogin(onSuccess) {
   const root = document.getElementById("login-screen");
 
   root.innerHTML = `
@@ -12,11 +15,16 @@ export function renderLogin(onLoginSuccess) {
   `;
 
   document.getElementById("login-btn").onclick = async () => {
+    const email = document.getElementById("login-email").value;
+    const password = document.getElementById("login-password").value;
+
     try {
-      await onLoginSuccess();
-    } catch (e) {
+      const user = await api.login(email, password);
+      setUser(user);
+      onSuccess();
+    } catch {
       const err = document.getElementById("login-error");
-      err.textContent = "Échec de connexion";
+      err.textContent = "Connexion échouée";
       err.classList.remove("hidden");
     }
   };
