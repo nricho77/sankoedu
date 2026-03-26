@@ -3,7 +3,7 @@
 // db.js — Couche d’accès aux données
 // ========================================
 
-import { API } from "./api.js";
+import { API } from "/js/api.js";
 
 class DB {
 
