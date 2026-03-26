@@ -4,7 +4,7 @@
 
 import { Auth } from "/js/auth.js";
 import { DBApp } from "/js/db.js";
-import { Toast } from "./components/toast.js";
+import { Toast } from "/ui/components/toast.js";
 
 export async function renderProfile() {
 
