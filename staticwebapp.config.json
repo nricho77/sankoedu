@@ -1,9 +1,11 @@
 {
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/js/*", "/ui/*", "/assets/*", "/api/*"]
-  },
-  "routes": [
-    { "route": "/api/*", "allowedRoles": ["anonymous"] }
-  ]
+    "exclude": [
+      "/js/*",
+      "/ui/*",
+      "/assets/*",
+      "/api/*"
+    ]
+  }
 }
