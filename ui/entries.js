@@ -1,4 +1,4 @@
-import { api } from "../js/api.js";
+import { api } from "/js/api.js";
 
 export async function renderEntries() {
   const root = document.getElementById("screens");
