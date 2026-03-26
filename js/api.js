@@ -1,12 +1,12 @@
 export const api = {
-  async login() {
-    const r = await fetch("/api/login", { method: "POST" });
-    if (!r.ok) throw new Error();
-    return r.text();
+  async getEntries() {
+    const r = await fetch("/api/sharepoint/entries");
+    return r.json();
   },
 
-  async getSharePointData() {
-    const r = await fetch("/api/sharepoint");
-    return r.json();
+  async approveEntry(id) {
+    return fetch(`/api/sharepoint/entries/${id}/approve`, {
+      method: "POST"
+    });
   }
 };
