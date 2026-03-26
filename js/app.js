@@ -1,6 +1,6 @@
-import { router } from "./router.js";
+import { router } from "/js/router.js";
 import { renderLogin } from "/ui/login.js";
-import { isAuthenticated, hasRole } from "./auth.js";
+import { isAuthenticated, hasRole } from "/js/auth.js";
 
 
 const loginScreen = document.getElementById("login-screen");
