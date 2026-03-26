@@ -2,7 +2,7 @@
 // entry.js — saisie d’une journée
 // =====================================================
 
-import { Auth } from "/js/auth.js";
+import { isAuthenticated } from "/js/auth.js";
 import { DBApp } from "/js/db.js";
 import { RouterApp } from "/js/router.js";
 import { JOUR_TYPES } from "/js/config.js";
