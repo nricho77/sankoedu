@@ -1,16 +1,23 @@
-import { ROLES } from "./config.js";
-
-let currentUser = null;
+const KEY = "ft_user";
 
 export function setUser(user) {
-  currentUser = user;
+  localStorage.setItem(KEY, JSON.stringify(user));
 }
 
 export function getUser() {
-  return currentUser;
+  const raw = localStorage.getItem(KEY);
+  return raw ? JSON.parse(raw) : null;
+}
+
+export function clearUser() {
+  localStorage.removeItem(KEY);
+}
+
+export function isAuthenticated() {
+  return !!getUser();
 }
 
 export function hasRole(role) {
-  return currentUser?.role === role;
+  const u = getUser();
+  return u?.role === role;
 }
-``
