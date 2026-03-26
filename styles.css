@@ -287,6 +287,10 @@ html, body {
   }
 }
 
+.hidden { display:none }
+body { font-family: Arial, sans-serif; padding: 1rem }
+nav button { margin-right: 0.5rem }
+
 /* ===================================================================
    7. UI ELEMENTS — Cards, grids, tables
 =================================================================== */
