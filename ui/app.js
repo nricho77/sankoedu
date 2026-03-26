@@ -6,12 +6,12 @@ import { Auth } from "/js/auth.js";
 import { RouterApp } from "/js/router.js";
 
 // UI modules
-import { renderHome } from "./ui/home.js";
-import { renderEntry } from "./ui/entry.js";
-import { renderEntries } from "./ui/entries.js";
-import { renderAppro } from "./ui/appro.js";
-import { renderAdmin } from "./ui/admin.js";
-import { renderProfile } from "./ui/profile.js";
+import { renderHome } from "./home.js";
+import { renderEntry } from "./entry.js";
+import { renderEntries } from "./entries.js";
+import { renderAppro } from "./appro.js";
+import { renderAdmin } from "./admin.js";
+import { renderProfile } from "./profile.js";
 
 import { showToast } from "/js/utils.js";
 
