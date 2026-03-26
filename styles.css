@@ -459,4 +459,80 @@ body {
     flex: 1;
   }
 }
+* { box-sizing: border-box; }
 
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f4f6f8;
+  min-height: 100vh;
+}
+
+/* Login */
+.login-card {
+  max-width: 360px;
+  margin: 15vh auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.1);
+  animation: fadeUp .4s ease;
+}
+
+.login-card h2 {
+  text-align: center;
+}
+
+.login-card input,
+.login-card button {
+  width: 100%;
+  margin-top: 1rem;
+  padding: .75rem;
+}
+
+.login-card button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.error {
+  color: #dc2626;
+  margin-top: .5rem;
+}
+
+.hidden { display: none; }
+
+/* App */
+.nav {
+  display: flex;
+  gap: .5rem;
+  padding: .5rem;
+  background: #1e293b;
+}
+
+.nav button {
+  color: white;
+  background: transparent;
+  border: none;
+  padding: .5rem 1rem;
+  cursor: pointer;
+}
+
+main {
+  padding: 1rem;
+  animation: fadeUp .2s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav { flex-wrap: wrap; }
+  .nav button { flex: 1; }
+}
