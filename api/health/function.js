@@ -1,7 +1,5 @@
 {
-  "bindings": [
-    {
-      "type": "httpTrigger",
+  "",  "bindings": [
       "authLevel": "anonymous",
       "direction": "in",
       "methods": ["get"],
@@ -14,3 +12,4 @@
     }
   ]
 }
+    {
