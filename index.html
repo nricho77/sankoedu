@@ -2,179 +2,30 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Feuilles de temps</title>
-
-  <!-- Styles global -->
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- Polices (fallback local si offline) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-  <!-- ========== SETUP (premier démarrage) ========== -->
-  <div id="setup-screen" class="screen-setup hidden">
-    <div class="auth-card">
-      <div class="auth-logo">
-        <div class="logo-mark">⚙</div>
-        <div>
-          <div class="logo-title">Feuilles de temps</div>
-          <div class="logo-sub">Configuration initiale</div>
-        </div>
-      </div>
+<div id="login-screen">
+  <h2>Connexion</h2>
+  <input id="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Mot de passe">
+  <button id="btn-login-local">Se connecter</button>
+</div>
 
-      <h2 class="auth-heading">Premier démarrage 👋</h2>
-      <p class="auth-desc">Créez le compte administrateur.</p>
+<div id="app" class="hidden">
+  <nav>
+    <button data-route="home">Accueil</button>
+    <button data-route="entries">Mes entrées</button>
+    <button data-route="appro">Approbation</button>
+    <button data-route="admin">Admin</button>
+    <button data-route="profile">Profil</button>
+  </nav>
+  <div id="screens"></div>
+</div>
 
-      <div id="setup-error" class="error-banner hidden"></div>
-
-      <div class="field-group">
-        <label>Organisation</label>
-        <input id="s-org" class="fi" type="text" placeholder="Sankofa éducation" />
-      </div>
-
-      <div class="field-group">
-        <label>Prénom</label>
-        <input id="s-first" class="fi" type="text" />
-      </div>
-
-      <div class="field-group">
-        <label>Nom</label>
-        <input id="s-last" class="fi" type="text" />
-      </div>
-
-      <div class="field-group">
-        <label>Courriel admin</label>
-        <input id="s-email" class="fi" type="email" />
-      </div>
-
-      <div class="field-group">
-        <label>Mot de passe</label>
-        <input id="s-pw" class="fi" type="password" />
-      </div>
-
-      <div class="field-group">
-        <label>Confirmer</label>
-        <input id="s-pw2" class="fi" type="password" />
-      </div>
-
-      <button class="btn-full" id="btn-setup">Créer l’application →</button>
-    </div>
-  </div>
-
-  <!-- ========== LOGIN (hybride local + MS365 + biométrie) ========== -->
-  <div id="login-screen" class="screen-login hidden">
-    <div class="auth-card">
-
-      <div class="auth-logo">
-        <div id="login-mark" class="logo-mark">?</div>
-        <div>
-          <div id="login-org" class="logo-title">Organisation</div>
-          <div class="logo-sub">Feuilles de temps</div>
-        </div>
-      </div>
-
-      <div id="login-error" class="error-banner hidden"></div>
-
-      <!-- Login MSAL -->
-      <div id="msal-wrap" class="hidden">
-        <button id="btn-msal" class="btn-ms">⊞ Se connecter avec Microsoft 365</button>
-        <p class="ms-hint">Votre compte Teams / Outlook / SharePoint</p>
-      </div>
-
-      <div id="login-or" class="or-sep hidden">
-        <span class="or-line"></span>
-        <span class="or-label">ou</span>
-        <span class="or-line"></span>
-      </div>
-
-      <!-- Login local -->
-      <div id="local-wrap">
-        <div class="field-group">
-          <label>Courriel</label>
-          <input id="l-email" class="fi" type="email" autocomplete="email" />
-          <div id="l-email-err" class="fhint"></div>
-        </div>
-
-        <div class="field-group">
-          <label>Mot de passe</label>
-          <input id="l-pw" class="fi" type="password" autocomplete="current-password" />
-          <div id="l-pw-err" class="fhint"></div>
-        </div>
-
-        <button id="btn-login-local" class="btn-full">Se connecter</button>
-      </div>
-
-      <!-- Login biométrique -->
-      <div id="biometric-wrap" class="hidden">
-        <div class="or-sep">
-          <span class="or-line"></span>
-          <span class="or-label">ou</span>
-          <span class="or-line"></span>
-        </div>
-        <button id="btn-login-bio" class="btn-biometric">
-          👆 Connexion biométrique
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ========== APPLICATION PRINCIPALE ========== -->
-  <div id="app" class="hidden">
-
-    <!-- NAVIGATION -->
-    <nav id="nav" class="nav">
-      <div class="nav-brand" id="nav-brand"></div>
-
-      <button class="nav-item" data-route="home">
-        <span class="ni-icon">🏠</span><span class="ni-lbl">Accueil</span>
-      </button>
-
-      <button class="nav-item" data-route="entries">
-        <span class="ni-icon">📋</span><span class="ni-lbl">Mes entrées</span>
-      </button>
-
-      <button class="nav-item hidden" id="ni-appro" data-route="appro">
-        <span class="ni-icon">✅</span>
-        <span id="appro-badge" class="ni-badge hidden"></span>
-        <span class="ni-lbl">Approbation</span>
-      </button>
-
-      <button class="nav-item hidden" id="ni-admin" data-route="admin">
-        <span class="ni-icon">⚙️</span><span class="ni-lbl">Admin</span>
-      </button>
-
-      <button class="nav-item" data-route="profile">
-        <span class="ni-icon">👤</span><span class="ni-lbl">Profil</span>
-      </button>
-    </nav>
-
-    <!-- CONTENU DES ÉCRANS -->
-    <div id="screens" class="screens">
-      <div id="screen-home"    class="screen hidden"></div>
-      <div id="screen-entries" class="screen hidden"></div>
-      <div id="screen-entry"   class="screen hidden"></div>
-      <div id="screen-history" class="screen hidden"></div>
-      <div id="screen-appro"   class="screen hidden"></div>
-      <div id="screen-admin"   class="screen hidden"></div>
-      <div id="screen-profile" class="screen hidden"></div>
-    </div>
-  </div>
-
-  <!-- MODAL GLOBAL -->
-  <div id="modal-overlay" class="overlay hidden">
-    <div id="modal" class="modal"></div>
-  </div>
-
-  <!-- TOAST -->
-  <div id="toast" class="toast hidden"></div>
-
-  <!-- Scripts -->
-  <script type="module" src="js/app.js"></script>
-
+<script type="module" src="/js/app.js"></script>
 </body>
 </html>
