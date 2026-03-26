@@ -2,8 +2,8 @@
 // app.js — point d'entrée principal & orchestrateur UI
 // =====================================================
 
-import { Auth } from "./auth.js";
-import { RouterApp } from "./router.js";
+import { Auth } from "/js/auth.js";
+import { RouterApp } from "/js/router.js";
 
 // UI modules
 import { renderHome } from "./ui/home.js";
@@ -13,7 +13,7 @@ import { renderAppro } from "./ui/appro.js";
 import { renderAdmin } from "./ui/admin.js";
 import { renderProfile } from "./ui/profile.js";
 
-import { showToast } from "./utils.js";
+import { showToast } from "/js/utils.js";
 
 
 // =====================================================
