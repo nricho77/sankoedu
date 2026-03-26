@@ -3,7 +3,7 @@
 // daypicker.js — sélection de dates intelligente
 // ======================================================
 
-import { isFerie } from "../../utils.js";
+import { isFerie } from "/js/utils.js";
 
 export function renderDayPicker(periodDays, currentDay, entries = {}) {
 
