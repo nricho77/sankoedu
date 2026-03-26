@@ -3,7 +3,7 @@
 // =====================================================
 
 import { Auth } from "/js/auth.js";
-import { RouterApp } from "/js/router.js";
+import { router } from "/js/router.js";
 
 // UI modules
 import { renderHome } from "/ui/home.js";
@@ -32,12 +32,12 @@ async function initApp() {
   prepareLoginHandlers();
 
   // Router : enregistrer les écrans
-  RouterApp.register("home",    renderHome);
-  RouterApp.register("entry",   renderEntry);
-  RouterApp.register("entries", renderEntries);
-  RouterApp.register("appro",   renderAppro);
-  RouterApp.register("admin",   renderAdmin);
-  RouterApp.register("profile", renderProfile);
+  router.register("home",    renderHome);
+  router.register("entry",   renderEntry);
+  router.register("entries", renderEntries);
+  router.register("appro",   renderAppro);
+  router.register("admin",   renderAdmin);
+  router.register("profile", renderProfile);
 
   // Si pas connecté → afficher login
   if (!user) {
