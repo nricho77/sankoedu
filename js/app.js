@@ -1,24 +1,37 @@
 import { router } from "./router.js";
 import { renderLogin } from "../ui/login.js";
-import { api } from "./api.js";
-import { hasRole } from "./auth.js";
+import { isAuthenticated, getUser, clearUser, hasRole } from "./auth.js";
 
-const loginContainer = document.getElementById("login-screen");
+const loginScreen = document.getElementById("login-screen");
 const app = document.getElementById("app");
 
 function showApp() {
-  loginContainer.classList.add("hidden");
+  loginScreen.classList.add("hidden");
   app.classList.remove("hidden");
+  applyAuthorizations();
   router.go("home");
 }
 
-if (!hasRole("admin")) {
-  document.querySelector('[data-route="admin"]')?.remove();
+function showLogin() {
+  app.classList.add("hidden");
+  loginScreen.classList.remove("hidden");
 }
 
-renderLogin(async () => {
-  await api.login();
-  showApp();
-});
+function applyAuthorizations() {
+  if (!hasRole("admin")) {
+    document.querySelector('[data-route="admin"]')?.remove();
+  }
+  if (!hasRole("approver") && !hasRole("admin")) {
+    document.querySelector('[data-route="appro"]')?.remove();
+  }
+}
 
 router.init();
+
+if (isAuthenticated()) {
+  showApp();
+} else {
+  renderLogin(showApp);
+  showLogin();
+}
+``
