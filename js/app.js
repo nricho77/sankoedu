@@ -16,12 +16,14 @@ function showLogin() {
 }
 
 function showApp() {
+  console.log("✅ showApp() appelée");
+
   loginScreen.classList.add("hidden");
   app.classList.remove("hidden");
-  applyAuthorizations();
+
   router.go("home");
 }
-
+renderLogin(showApp);
 /* =========================
    Gestion des rôles UI
 ========================= */
