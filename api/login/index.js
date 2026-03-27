@@ -1,7 +1,6 @@
 module.exports = async function (context, req) {
   let body = req.body;
 
-  // Fallback Azure Functions
   if (!body && req.rawBody) {
     try {
       body = JSON.parse(req.rawBody);
@@ -10,10 +9,10 @@ module.exports = async function (context, req) {
     }
   }
 
-  if (!body || typeof body.email !== "string") {
+  if (!body || !body.email) {
     context.res = {
       status: 400,
-      body: { error: "Email manquant ou invalide" }
+      body: { error: "Email manquant" }
     };
     return;
   }
