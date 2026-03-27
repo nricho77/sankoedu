@@ -561,3 +561,18 @@ main {
   .nav { flex-wrap: wrap; }
   .nav button { flex: 1; }
 }
+
+.appro-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.appro-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
