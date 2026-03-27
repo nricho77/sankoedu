@@ -5,8 +5,7 @@
       "direction": "in",
       "authLevel": "anonymous",
       "methods": ["post"],
-      "name": "req",
-      "dataType": "json"
+      "name": "req"
     },
     {
       "type": "http",
