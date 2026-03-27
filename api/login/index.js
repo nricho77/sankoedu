@@ -1,7 +1,7 @@
 module.exports = async function (context, req) {
   let body = req.body;
 
-  // Sécurité supplémentaire (Azure peut fournir rawBody)
+  // Fallback Azure Functions
   if (!body && req.rawBody) {
     try {
       body = JSON.parse(req.rawBody);
@@ -10,19 +10,16 @@ module.exports = async function (context, req) {
     }
   }
 
-  if (!body || !body.email) {
+  if (!body || typeof body.email !== "string") {
     context.res = {
       status: 400,
-      body: {
-        error: "Email manquant dans la requête"
-      }
+      body: { error: "Email manquant ou invalide" }
     };
     return;
   }
 
-  const email = body.email;
+  const email = body.email.trim();
 
-  // Rôles simulés (à connecter plus tard à SharePoint)
   let role = "user";
   if (email.endsWith("@admin.com")) role = "admin";
   if (email.endsWith("@appro.com")) role = "approver";
