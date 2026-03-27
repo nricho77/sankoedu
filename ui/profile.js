@@ -2,7 +2,7 @@
 // profile.js — écran Profil utilisateur
 // =====================================================
 
-import { Auth } from "/js/auth.js";
+import { isAuthenticated } from "/js/auth.js";
 import { DBApp } from "/js/db.js";
 import { Toast } from "/ui/components/toast.js";
 
