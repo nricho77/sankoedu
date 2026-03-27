@@ -15,17 +15,15 @@ export function renderLogin(onSuccess) {
   `;
 
   document.getElementById("login-btn").onclick = async () => {
-    const email = document.getElementById("login-email")?.value;
-    const password = document.getElementById("login-password").value;
+    const emailInput = document.getElementById("login-email")
+    const passwordInput = document.getElementById("login-password");
 
-    try {
-      const user = await api.login(email, password);
-      setUser(user);
-      onSuccess();
-    } catch {
-      const err = document.getElementById("login-error");
-      err.textContent = "Connexion échouée";
-      err.classList.remove("hidden");
+    
+    if (!emailInput || !emailInput.value.trim()) {
+      throw new Error("Email manquant côté UI");
     }
+
+    const email = emailInput.value.trim();
+    const password = passwordInput?.value || "";
   };
 }
