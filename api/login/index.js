@@ -1,12 +1,28 @@
 module.exports = async function (context, req) {
-  const { email } = req.body || {};
+  let body = req.body;
 
-  if (!email) {
-    context.res = { status: 400, body: "Email requis" };
+  // Sécurité supplémentaire (Azure peut fournir rawBody)
+  if (!body && req.rawBody) {
+    try {
+      body = JSON.parse(req.rawBody);
+    } catch {
+      body = null;
+    }
+  }
+
+  if (!body || !body.email) {
+    context.res = {
+      status: 400,
+      body: {
+        error: "Email manquant dans la requête"
+      }
+    };
     return;
   }
 
-  // ⛏️ À remplacer plus tard par SharePoint FT_Users
+  const email = body.email;
+
+  // Rôles simulés (à connecter plus tard à SharePoint)
   let role = "user";
   if (email.endsWith("@admin.com")) role = "admin";
   if (email.endsWith("@appro.com")) role = "approver";
@@ -15,8 +31,8 @@ module.exports = async function (context, req) {
     status: 200,
     body: {
       email,
-      role,
-      name: email.split("@")[0]
+      name: email.split("@")[0],
+      role
     }
   };
 };
