@@ -9,7 +9,7 @@ import { Toast } from "/ui/components/toast.js";
 export async function renderProfile() {
 
   const screen = document.getElementById("screen-profile");
-  const u = Auth.currentUser;
+  const u = isAuthenticated.currentUser;
 
   if (!u) {
     screen.innerHTML = `<div class='pad'>Session expirée.</div>`;
@@ -60,7 +60,7 @@ export async function renderProfile() {
   };
 
   document.getElementById("btn-logout").onclick = () => {
-    Auth.logout();
+    isAuthenticated.logout();
     location.reload();
   };
 }
